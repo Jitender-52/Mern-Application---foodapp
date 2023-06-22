@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#carousel{
+  max-height: 500px;
+}
+
+.imgBox{
+  object-fit:  contain !important;
+  height: 500px;
+  width: 100%;
+  /* position: center; */
+}
