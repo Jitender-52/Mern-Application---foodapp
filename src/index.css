@@ -17,8 +17,7 @@ code {
 }
 
 .imgBox{
-  object-fit:  contain !important;
-  height: 500px;
-  width: 100%;
-  /* position: center; */
+  object-fit: cover !important;
+  object-position: center;
+  max-height:500px;
 }
