@@ -5,10 +5,10 @@ export default function Carousel() {
     <div>
         <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
             <div className="carousel-inner" id="carousel">
-            <div class="carousel-caption" style={{zIndex:"10"}}>
-                <form class="d-flex">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search"/>
-                    <button class="btn btn-outline-success bg-dark text-light" type="submit">Search</button>
+            <div className="carousel-caption" style={{zIndex:"10"}}>
+                <form className="d-flex">
+                    <input className="form-control me-2 " type="search" placeholder="Search" aria-label="Search"/>
+                    <button className="btn btn-outline-success bg-dark text-light" type="submit">Search</button>
                 </form>
             </div>
 
@@ -34,3 +34,4 @@ export default function Carousel() {
     </div>
   )
 }
+
