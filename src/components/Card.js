@@ -1,15 +1,19 @@
 import React from 'react'
 
-export default function Card() {
+export default function Card(props) {
+
+    let options = props.options;
+    let priceOptions = Object.keys(options);
+
   return (
     <>
         <div>
             <div className="card mt-3" style={{"width":"18rem", "maxHeight":"360px"}}>
                 {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScqE91FfeExJ_qVFW-LjLybdXL-J643ZQvCw&usqp=CAU" className="card-img-top" alt="..."/> */}
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ji658LbLQ21tTJg1W1CQkzZn7tgtdr5FwA&usqp=CAU" className="card-img-top" alt="..."/>
+                <img src={props.imgSrc} className="card-img-top" alt="..." style={{height:"120px", objectFit:"fill"}}/>
                 <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Order your favourite food here.</p>
+                    <h5 className="card-title">{props.foodName}</h5>
+                    {/* <p className="card-text">Order your favourite food here.</p> */}
                     <div className="container ">
                         <select  className="m-2 rounded bg-dark text-light">
                             {Array.from(Array(6), (e, i)=>{
@@ -19,8 +23,13 @@ export default function Card() {
                             })}
                         </select>
                         <select className="m-2 h-100 bg-dark text-light rounded">
-                            <option value="half">Half</option>
-                            <option value="full">Full</option>
+                            {
+                                priceOptions.map((data)=>{
+                                    return <option key={data} value={data}>{data}</option>
+                                })
+                            }
+                            {/* <option value="half">Half</option>
+                            <option value="full">Full</option> */}
                         </select>
                         <div className="d-inline">
                             Total Price
