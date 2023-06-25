@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatchCart, useCart } from './ContextReducer';
 
 export default function Card(props) {
     let dispatch = useDispatchCart();
     let data = useCart();
+    let priceRef = useRef()
     let options = props.options;
     let priceOptions = Object.keys(options);
     // let foodItem = props.foodItems;
@@ -11,9 +12,14 @@ export default function Card(props) {
     const[size, setSize] = useState("");
 
     const handleAddToCart = async () =>{
-        await dispatch({type:"ADD", id: props._id, name: props.foodItem.name, price: props.finalPrice, qty: qty, size: size});
-        // console.log(data);
+        await dispatch({type:"ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
+        await console.log(data);
     }
+
+    let finalPrice = qty * parseInt(options[size]);
+    useEffect(() => {
+        setSize(priceRef.current.value);
+    },[])
 
   return (
     <>
@@ -32,7 +38,7 @@ export default function Card(props) {
                                 )
                             })}
                         </select>
-                        <select className="m-2 h-100 bg-dark text-light rounded" onChange={(e)=>setSize(e.target.value)}>
+                        <select className="m-2 h-100 bg-dark text-light rounded" ref={priceRef} onChange={(e)=>setSize(e.target.value)}>
                             {
                                 priceOptions.map((data)=>{
                                     return <option key={data} value={data}>{data}</option>
@@ -42,7 +48,7 @@ export default function Card(props) {
                             <option value="full">Full</option> */}
                         </select>
                         <div className="d-inline">
-                            Total Price
+                            ${finalPrice}/-
                         </div>
                         <hr />
                         <div className='btn btn-dark justify-center text-white ms-4' onClick={handleAddToCart}>Add to cart</div>
