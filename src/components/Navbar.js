@@ -1,10 +1,13 @@
-import React from 'react'
-import { createContext, useContext, useReducer } from './ContextReducer'
+import React, { useState } from 'react'
+// import { createContext, useContext, useReducer } from './ContextReducer'
 import { Link, useNavigate } from 'react-router-dom'
+import Badge from 'react-bootstrap/badge'
+import Modal from '../Modal';
+import Cart from '../screens/Cart';
 
 
 export default function Navbar() {
-  
+  const [cartView, setCartView] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -45,7 +48,11 @@ export default function Navbar() {
                 <div>
                   {/* <Link className="nav-link" to="/login" >LogOUt</Link> */}
                   {/* but we need to handle to authToken also */}
-                  <div className='btn bg-white text-dark mx-2' onClick={handleLogout}>My Cart</div>
+                  <div className='btn bg-white text-dark mx-2' onClick={() => {setCartView(true)}}>
+                    My Cart {" "}
+                    <Badge pill bg="primary">2</Badge>
+                  </div>
+                  {cartView ? <Modal onClose={() => setCartView(false)}> <Cart/> </Modal> : null}
                 </div>
                 <div>
                   {/* <Link className="nav-link" to="/login" >LogOUt</Link> */}
