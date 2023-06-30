@@ -19,8 +19,8 @@ export default function Cart() {
     let totalPrice = data.reduce((total, food) => total + food.price, 0);
   return (
         <div> <div className='container m-auto mt-5 table-responsive table-responsive-sm table-responsive-md'>
-            <table className='table table-hover'>
-                <thead className='text-dark fs-4'>
+            <table className='table table-hover text-white'>
+                <thead className='text-primary fs-4'>
                     <tr>
                         <th scope="col"> # </th>
                         <th scope="col"> Name </th>
@@ -31,16 +31,16 @@ export default function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((food, index) => {
-                        <tr>
-                            <th scope='row'>{index + 1}</th>
-                            <td>{food.name}</td>
-                            <td>{food.qty}</td>
-                            <td>{food.size}</td>
-                            <td>{food.price}</td>
-                            <td><button type='button' className='btn p-0'> <img  alt="delete" onClick= {() => {dispatch({type:"Remove",index:index})} }/></button></td>
+                    {data.map((food, index) => (
+                        <tr className='table__row' style={{text: 'white'}}>
+                            <th  scope='row'>{index + 1}</th>
+                            <td >{food.name}</td>
+                            <td >{food.qty}</td>
+                            <td >{food.size}</td>
+                            <td >{food.price}</td>
+                            <td ><button type='button' className='btn p-0'> <img  alt="delete" onClick= {() => {dispatch({type:"Remove",index:index})} }/></button></td>
                         </tr>
-                    })}
+                    ))}
                 </tbody>
             </table>
             
