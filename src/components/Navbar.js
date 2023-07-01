@@ -4,10 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import Badge from 'react-bootstrap/badge'
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
+import { useCart } from './ContextReducer';
 
 
 export default function Navbar() {
   const [cartView, setCartView] = useState(false);
+  let data = useCart();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -18,7 +20,7 @@ export default function Navbar() {
 
   return (
     <>
-        <nav className="navbar navbar-expand-lg bg-dark bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-dark bg-body-tertiary fixed-top">
         <div className="container-fluid navbar-dark me-auto">
             <Link className="navbar-brand" to="#">FoodApp</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +52,7 @@ export default function Navbar() {
                   {/* but we need to handle to authToken also */}
                   <div className='btn bg-white text-dark mx-2' onClick={() => {setCartView(true)}}>
                     My Cart {" "}
-                    <Badge pill bg="primary">2</Badge>
+                  {(data.length === 0) ? "" : <Badge pill bg="primary"> {data.length} </Badge>}
                   </div>
                   {cartView ? <Modal onClose={() => setCartView(false)}> <Cart/> </Modal> : null}
                 </div>

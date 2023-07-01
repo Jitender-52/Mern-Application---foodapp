@@ -21,3 +21,17 @@ code {
   object-position: center;
   max-height:500px;
 }
+
+.food_Items:hover > td
+{
+  color: gray !important;
+}
+.food_Items:hover > th
+{
+  color:  gray !important;
+}
+
+.food_Items:hover
+{
+  color: blue !important;
+}

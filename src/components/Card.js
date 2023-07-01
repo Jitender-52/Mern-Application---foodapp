@@ -12,8 +12,41 @@ export default function Card(props) {
     const[size, setSize] = useState("");
 
     const handleAddToCart = async () =>{
+
+        let food = [];
+        for(const item of data){
+            if(item.id === props.foodItem._id){
+                food = item;
+                break;
+            }
+            // if(item.id === props.foodItem._id && item.size !== size){
+            //     food = item;
+            //     // break;
+            // }
+            // if(item.id === props.foodItem._id && item.size === size)
+            // {
+            //     if(food !== [])
+            //     {
+            //         food = [];
+            //         // return
+            //     }
+            //     food = [];
+            // }
+        }
+
+        if(food !== []){
+            if(food.size === size){ // this size is the new size selected by the user and food.size is the searched size from the cart
+                await dispatch({type: "UPDATE", id: props.foodItem._id, price: finalPrice, qty: qty})
+                return 
+            }
+            else if(food.size !== size){
+                await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
+                return
+            }
+            return;
+        }
         await dispatch({type:"ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
-        await console.log(data);
+        // await console.log(data);
     }
 
     let finalPrice = qty * parseInt(options[size]);
