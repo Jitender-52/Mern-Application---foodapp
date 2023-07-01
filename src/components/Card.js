@@ -43,7 +43,7 @@ export default function Card(props) {
                 await dispatch({type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
                 return
             }
-            return;
+            return
         }
         await dispatch({type:"ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size});
         // await console.log(data);

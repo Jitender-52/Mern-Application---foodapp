@@ -26,6 +26,10 @@ export default function Signup() {
                 alert(json.errors);
             }
         }
+        // if(json.success)
+        // {
+        //     console.log("done")
+        // }
     }
     
     const onChange = (event) =>{

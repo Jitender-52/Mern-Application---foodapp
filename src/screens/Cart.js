@@ -16,6 +16,25 @@ export default function Cart() {
 
     }
 
+    const handleCheckOUt = async()=>{
+        let userEmail = localStorage.getItem("userEmail");
+        let response = await fetch("http://localhost:5000/api/orderData",{
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                order_data: data,
+                email: userEmail, 
+                order_data: new Date().toDateString()
+            })
+        });
+        console.log("Order Response:", response)
+        if(response.status === 200){
+            dispatch({type: "DROP"})
+        }
+    }
+
     let totalPrice = data.reduce((total, food) => total + food.price, 0);
   return (
         <div> <div className='container m-auto mt-5 table-responsive table-responsive-sm table-responsive-md'>
@@ -45,7 +64,7 @@ export default function Cart() {
             </table>
             
             <div>
-                <button className='btn bg-dark mt-5 text-light'> Check Out </button>
+                <button className='btn bg-dark mt-5 text-light' onClick={handleCheckOUt}> Check Out </button>
             </div>
 
         </div> </div>
