@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Signup() {
-
+    const navigate = useNavigate();
     const [credentials, Setcredentials] = useState({name:"", email:"", password:"", geolocation:""})
 
     const handleSubmit = async (e) =>{
@@ -26,10 +26,12 @@ export default function Signup() {
                 alert(json.errors);
             }
         }
-        // if(json.success)
-        // {
-        //     console.log("done")
-        // }
+        if(json.success){
+            localStorage.setItem("authToken", json.authToken);
+            localStorage.setItem("userEmail", credentials.email);
+            console.log(localStorage.getItem(json.authToken));
+            navigate("/");
+          }
     }
     
     const onChange = (event) =>{

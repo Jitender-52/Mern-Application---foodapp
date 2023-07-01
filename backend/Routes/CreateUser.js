@@ -8,9 +8,10 @@ const jwtSecret = "IAmaWebDeveloper"
 const { body, validationResult } = require('express-validator');
 
 router.post("/createuser",[
-body('name', 'Invalid Name').isLength({ min: 3 }),
-body('email', 'Invalid Email').isEmail(),
-body('password', 'Incorrect Password').isLength({ min: 5 })
+body('name', 'Enter Valid Name ...!').isLength({ min: 3 }),
+body('email', 'Enter Valid Email ...!').isEmail(),
+body('password', 'Enter Valid Password ...!').isLength({ min: 5 }),
+body('location', 'Enter Valid Address ...!').isLength({ min: 1 })
 ]
 ,async(req, res) => {
 
