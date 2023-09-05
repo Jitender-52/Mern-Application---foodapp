@@ -22,7 +22,7 @@ export default function Navbar() {
     <>
         <nav className="navbar navbar-expand-lg bg-dark bg-body-tertiary fixed-top">
         <div className="container-fluid navbar-dark me-auto">
-            <Link className="navbar-brand" to="#">FoodApp</Link>
+            <Link className="navbar-brand" to="#">Food App</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
             </button>
