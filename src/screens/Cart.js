@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCart, useDispatchCart } from '../components/ContextReducer'
+import {Delete} from '@mui/icons-material'
 // import trash from "../trash.svg";
 
 export default function Cart() {
@@ -13,7 +14,6 @@ export default function Cart() {
                 <div className='m-5 w-100 text-center fs-3'>The cart is empty!</div>
             </div>
         )
-
     }
 
     const handleCheckOUt = async()=>{
@@ -57,7 +57,9 @@ export default function Cart() {
                             <td>{food.qty}</td>
                             <td>{food.size}</td>
                             <td>{food.price}</td>
-                            <td><button type='button' className='btn p-0'> <img  alt="delete" onClick= {() => {dispatch({type:"REMOVE",index:index})} }/></button></td>
+                            {/* <Delete /> */}
+                            {/* <td><button type='button' className='btn p-0'> <img  alt="delete" onClick= {() => {dispatch({type:"REMOVE",index:index})} }/></button></td> */}
+                            <td><button type="button" className="btn p-0"><Delete onClick={() => { dispatch({ type: "REMOVE", index: index }) }} sx={{color:"white"}}/></button> </td>
                         </tr>
                     ))}
                 </tbody>

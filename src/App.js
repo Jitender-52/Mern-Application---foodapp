@@ -2,6 +2,7 @@ import './App.css';
 import Home from './screens/Home';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
+import MyOrder from './screens/MyOrder';
 
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
@@ -17,9 +18,10 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route exact path = "/" element={<Home/>}/>
+            <Route exact path="/" element={<Home/>}/>
             <Route exact path="/login" element={<Login/>}/>
             <Route exact path="/signup" element={<Signup/>}/>
+            <Route exact path="/myOrder" element={<MyOrder/>}/>
             {/* <Route exact path = "/cart" element={<Cart/>}/> */}
           </Routes>
         </div>
